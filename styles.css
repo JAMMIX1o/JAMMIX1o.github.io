@@ -2,7 +2,19 @@
    Pure HTML/CSS/JS - No frameworks
    Dark theme with coral accents
 
-   v2 - Fixes based on original site analysis */
+   v3 - Correct font (Gotham Womans) and styling */
+
+/* ================================
+   Custom Fonts
+   ================================ */
+@font-face {
+    font-family: 'Gotham Womans';
+    src: url('fonts/gotham-womans.woff2') format('woff2'),
+         url('fonts/gotham-womans.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* ================================
    CSS Variables
@@ -13,12 +25,14 @@
     --bg-hero: #262626;
     --text-primary: #FFFFFF;
     --text-muted: #ADADAD;
+    --text-gray: #D0D0D0;
     --text-dark: #1D1D1D;
     --accent-coral: #EC7969;
     --accent-pink: #F26687;
     --focus-blue: #116dff;
     --container-width: 980px;
     --header-height: 55px;
+    --font-hero: 'Gotham Womans', 'Oswald', sans-serif;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Questrial', sans-serif;
     --font-ui: 'Inter', 'DIN Next W01 Light', sans-serif;
@@ -168,14 +182,15 @@ ul {
     padding-top: 20px;
 }
 
-/* Hero title - CORAL color, not white */
+/* Hero title - Gotham Womans stencil font, gray color */
 .hero-title {
-    font-family: var(--font-heading);
-    font-size: 74px;
-    font-weight: 200;
-    line-height: 1.4;
-    margin-bottom: 17px;
-    color: var(--accent-coral);
+    font-family: var(--font-hero);
+    font-size: 152px;
+    font-weight: 400;
+    line-height: 0.9;
+    margin-bottom: 20px;
+    color: var(--text-gray);
+    letter-spacing: normal;
 }
 
 .hero-tagline {
@@ -452,7 +467,7 @@ ul {
     }
 
     .hero-title {
-        font-size: 56px;
+        font-size: 100px;
     }
 
     .hero-platforms {
@@ -502,7 +517,7 @@ ul {
     }
 
     .hero-title {
-        font-size: 42px;
+        font-size: 64px;
     }
 
     .hero-platforms {

@@ -131,10 +131,10 @@ ul {
 }
 
 .header-container {
-    max-width: var(--container-width);
+    width: 50%;
     height: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin: 0;
+    padding: 0 20px 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,6 +167,15 @@ ul {
 }
 
 .nav-link:hover {
+    color: var(--bg-secondary);
+}
+
+/* Social link in header - dark color */
+.header-nav .social-link {
+    color: var(--text-dark);
+}
+
+.header-nav .social-link:hover {
     color: var(--bg-secondary);
 }
 
@@ -495,6 +504,11 @@ ul {
     .scroll-content {
         width: 100%; /* Full width when no fixed panel */
         padding-left: 0; /* Remove left padding on mobile */
+    }
+
+    .header-container {
+        width: 100%; /* Full width header on mobile */
+        padding: 0 20px;
     }
 
     .mobile-product-image {

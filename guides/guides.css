@@ -1,0 +1,148 @@
+/* Guides Page Specific Styles */
+
+.guides-hero {
+    padding: 60px 20px 40px;
+    background-color: var(--bg-hero);
+}
+
+.guides-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.guides-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent-coral);
+    text-align: center;
+}
+
+/* Active nav link state */
+.nav-link--active {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+}
+
+/* Documentation Section */
+.guides-docs {
+    padding: 64px 20px;
+    background-color: var(--bg-primary);
+}
+
+.docs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.doc-card {
+    background-color: var(--bg-secondary);
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.doc-card:hover {
+    transform: translateY(-4px);
+    background-color: #2d2d2d;
+    color: var(--text-primary);
+}
+
+.doc-icon {
+    color: var(--accent-coral);
+}
+
+.doc-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.doc-description {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Videos Section */
+.guides-videos {
+    padding: 64px 20px;
+    background-color: var(--bg-secondary);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.video-card {
+    aspect-ratio: 16 / 9;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-muted);
+}
+
+.video-placeholder svg {
+    opacity: 0.5;
+}
+
+.video-placeholder p {
+    font-family: var(--font-body);
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .docs-grid,
+    .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .guides-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .docs-grid,
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guides-hero {
+        padding: 40px 20px 30px;
+    }
+
+    .guides-title {
+        font-size: 28px;
+    }
+
+    .guides-docs,
+    .guides-videos {
+        padding: 40px 20px;
+    }
+}

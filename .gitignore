@@ -30,6 +30,9 @@ logs/
 *.temp
 .cache/
 
+# Analysis data (scraped from original site)
+analysis/
+
 # Node (if ever needed)
 node_modules/
 npm-debug.log*

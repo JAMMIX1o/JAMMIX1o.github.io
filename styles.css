@@ -193,32 +193,31 @@ ul {
     letter-spacing: normal;
 }
 
+/* Tagline - Oswald 55px bold, CORAL */
 .hero-tagline {
-    font-family: var(--font-ui);
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-bottom: 11px;
-}
-
-/* Platforms - 55px bold Oswald */
-.hero-platforms {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 29px;
-    align-items: center;
-}
-
-.hero-platforms li {
     font-family: var(--font-heading);
     font-size: 55px;
     font-weight: 700;
     color: var(--accent-coral);
-    line-height: 1.4;
+    margin-bottom: 16px;
+    line-height: 1.1;
 }
 
-.hero-platforms li:not(:last-child)::after {
-    content: ' /';
-    color: var(--accent-coral);
+/* Platforms - Oswald 74px, WHITE, stacked */
+.hero-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.hero-platforms li {
+    font-family: var(--font-heading);
+    font-size: 74px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.1;
 }
 
 .hero-description {

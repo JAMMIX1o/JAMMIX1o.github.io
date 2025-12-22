@@ -1,16 +1,57 @@
 /**
  * JAMMIX - Minimal JavaScript
  * Clean implementation - no frameworks
+ * v2 - Added lightbox functionality
  */
 
 (function() {
     'use strict';
 
+    // ================================
+    // Lightbox functionality
+    // ================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    // Open lightbox when clicking gallery images
+    document.querySelectorAll('.gallery-image').forEach(img => {
+        img.addEventListener('click', function() {
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // ================================
     // Smooth scroll for anchor links
+    // ================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || targetId === '#purchase' || targetId === '#guides') return;
 
             const target = document.querySelector(targetId);
             if (target) {
@@ -23,30 +64,9 @@
         });
     });
 
-    // Lazy load images for better performance
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                    }
-                    img.classList.add('loaded');
-                    imageObserver.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px 0px'
-        });
-
-        document.querySelectorAll('.gallery-image').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-
-    // Add subtle fade-in animation on scroll
+    // ================================
+    // Fade-in animation on scroll
+    // ================================
     if ('IntersectionObserver' in window) {
         const fadeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

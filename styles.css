@@ -1,6 +1,8 @@
 /* JAMMIX - Clean Recreation
    Pure HTML/CSS/JS - No frameworks
-   Dark theme with coral accents */
+   Dark theme with coral accents
+
+   v2 - Fixes based on original site analysis */
 
 /* ================================
    CSS Variables
@@ -8,14 +10,18 @@
 :root {
     --bg-primary: #1D1D1D;
     --bg-secondary: #262626;
+    --bg-hero: #262626;
     --text-primary: #FFFFFF;
     --text-muted: #ADADAD;
+    --text-dark: #1D1D1D;
     --accent-coral: #EC7969;
-    --accent-pink: rgba(242, 102, 143, 1);
+    --accent-pink: #F26687;
     --focus-blue: #116dff;
     --container-width: 980px;
+    --header-height: 55px;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Questrial', sans-serif;
+    --font-ui: 'Inter', 'DIN Next W01 Light', sans-serif;
 }
 
 /* ================================
@@ -34,7 +40,7 @@ html {
 body {
     font-family: var(--font-body);
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.4;
     color: var(--text-primary);
     background-color: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
@@ -67,7 +73,7 @@ ul {
 }
 
 /* ================================
-   Header
+   Header (55px height, dark logo)
    ================================ */
 .site-header {
     position: sticky;
@@ -75,12 +81,14 @@ ul {
     z-index: 1000;
     background-color: var(--accent-coral);
     border-bottom: 7px solid var(--accent-pink);
+    height: var(--header-height);
 }
 
 .header-container {
     max-width: var(--container-width);
+    height: 100%;
     margin: 0 auto;
-    padding: 12px 20px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,13 +98,13 @@ ul {
     font-family: var(--font-heading);
     font-size: 24px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text-dark);
     letter-spacing: 0.05em;
 }
 
 .logo:hover {
-    color: var(--text-primary);
-    opacity: 0.9;
+    color: var(--text-dark);
+    opacity: 0.8;
 }
 
 .header-nav {
@@ -106,9 +114,14 @@ ul {
 }
 
 .nav-link {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: 14px;
-    color: var(--text-primary);
+    color: var(--text-dark);
+    letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+    color: var(--bg-secondary);
 }
 
 .btn-primary {
@@ -117,12 +130,15 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    padding: 10px 20px;
+    padding: 8px 16px;
+    height: 32px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    border: 1px solid var(--text-primary);
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
 }
 
 .btn-primary:hover {
@@ -131,63 +147,76 @@ ul {
 }
 
 /* ================================
-   Hero Section
+   Hero Section (#262626 background)
    ================================ */
 .hero {
     padding: 80px 20px;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-hero);
 }
 
 .hero-container {
     max-width: var(--container-width);
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    gap: 60px;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
 }
 
 .hero-content {
     flex: 1;
+    padding-top: 20px;
 }
 
+/* Hero title - CORAL color, not white */
 .hero-title {
     font-family: var(--font-heading);
     font-size: 74px;
     font-weight: 200;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 17px;
+    color: var(--accent-coral);
 }
 
 .hero-tagline {
-    font-size: 18px;
+    font-family: var(--font-ui);
+    font-size: 16px;
     color: var(--text-muted);
-    margin-bottom: 12px;
+    margin-bottom: 11px;
 }
 
+/* Platforms - 55px bold Oswald */
 .hero-platforms {
     display: flex;
-    gap: 24px;
-    margin-bottom: 24px;
+    gap: 16px;
+    margin-bottom: 29px;
+    align-items: center;
 }
 
 .hero-platforms li {
     font-family: var(--font-heading);
-    font-size: 30px;
+    font-size: 55px;
     font-weight: 700;
+    color: var(--accent-coral);
+    line-height: 1.4;
+}
+
+.hero-platforms li:not(:last-child)::after {
+    content: ' /';
     color: var(--accent-coral);
 }
 
 .hero-description {
-    font-size: 18px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 32px;
-    max-width: 480px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 57px;
+    max-width: 400px;
 }
 
 .compatibility-badge {
-    max-width: 300px;
+    max-width: 362px;
 }
 
 .hero-image {
@@ -195,7 +224,7 @@ ul {
 }
 
 .product-image {
-    max-width: 450px;
+    max-width: 556px;
     width: 100%;
 }
 
@@ -204,17 +233,17 @@ ul {
    ================================ */
 .section-title {
     font-family: var(--font-heading);
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 /* ================================
-   Features Section
+   Features Section (SINGLE COLUMN)
    ================================ */
 .features {
-    padding: 80px 20px;
+    padding: 64px 83px;
     background-color: var(--bg-secondary);
 }
 
@@ -223,16 +252,18 @@ ul {
     margin: 0 auto;
 }
 
+/* Single column layout - matches original */
 .features-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .features-list li {
+    font-family: var(--font-body);
     font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.5;
+    color: var(--text-primary);
+    line-height: 1.4;
     padding-left: 20px;
     position: relative;
 }
@@ -241,15 +272,14 @@ ul {
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--accent-coral);
-    font-weight: bold;
+    color: var(--text-primary);
 }
 
 /* ================================
    Showcase Sections
    ================================ */
 .showcase {
-    padding: 80px 20px;
+    padding: 64px 20px;
     background-color: var(--bg-primary);
 }
 
@@ -259,30 +289,33 @@ ul {
 }
 
 .showcase-description {
-    font-size: 18px;
+    font-family: var(--font-body);
+    font-size: 16px;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: 40px;
     max-width: 700px;
 }
 
+/* Gallery - 4 columns, masonry-style */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    align-items: start;
 }
 
 .gallery-image {
     width: 100%;
-    height: 280px;
+    height: auto;
     object-fit: cover;
-    border-radius: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
 }
 
 .gallery-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0.85;
 }
 
 .arcade-showcase {
@@ -293,7 +326,7 @@ ul {
    Specs Section
    ================================ */
 .specs {
-    padding: 80px 20px;
+    padding: 64px 20px;
     background-color: var(--bg-primary);
 }
 
@@ -303,16 +336,17 @@ ul {
 }
 
 .specs-list li {
-    font-size: 16px;
+    font-family: var(--font-body);
+    font-size: 15px;
     color: var(--text-muted);
-    line-height: 1.8;
+    line-height: 1.4;
     padding-left: 20px;
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .specs-list li::before {
-    content: '→';
+    content: '•';
     position: absolute;
     left: 0;
     color: var(--accent-coral);
@@ -356,8 +390,55 @@ ul {
 }
 
 /* ================================
+   Lightbox (for gallery images)
+   ================================ */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+/* ================================
    Responsive Design
    ================================ */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        padding: 64px 40px;
+    }
+}
+
 @media (max-width: 900px) {
     .hero-container {
         flex-direction: column-reverse;
@@ -376,6 +457,11 @@ ul {
 
     .hero-platforms {
         justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-platforms li {
+        font-size: 40px;
     }
 
     .hero-description {
@@ -387,32 +473,28 @@ ul {
     }
 
     .product-image {
-        max-width: 350px;
-    }
-
-    .features-list {
-        grid-template-columns: 1fr;
+        max-width: 400px;
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-image {
-        height: auto;
-        aspect-ratio: 16/9;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
     .header-container {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+        padding: 8px 10px;
+    }
+
+    .site-header {
+        height: auto;
     }
 
     .header-nav {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
     }
 
     .hero {
@@ -425,21 +507,32 @@ ul {
 
     .hero-platforms {
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
     }
 
     .hero-platforms li {
-        font-size: 24px;
-    }
-
-    .section-title {
         font-size: 32px;
     }
 
-    .features,
+    .hero-platforms li:not(:last-child)::after {
+        content: '';
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .features {
+        padding: 40px 20px;
+    }
+
     .showcase,
     .specs {
-        padding: 60px 20px;
+        padding: 40px 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 
     .footer-container {

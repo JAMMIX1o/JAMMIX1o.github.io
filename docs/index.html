@@ -6,7 +6,8 @@
     <!-- Mobile redirect (for GitHub Pages - no server-side routing) -->
     <script>
     if (/mobile|android|iphone|ipad/i.test(navigator.userAgent) && !location.pathname.includes('mobile')) {
-        location.replace('mobile.html');
+        var base = location.pathname.replace(/\/?$/, '/');
+        location.replace(base + 'mobile.html');
     }
     </script>
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">

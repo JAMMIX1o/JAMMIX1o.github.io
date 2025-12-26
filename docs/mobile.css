@@ -1,0 +1,377 @@
+/* JAMMIX Mobile - Single Column Layout
+   No split pane, no fixed elements, linear flow */
+
+/* ================================
+   Custom Fonts
+   ================================ */
+@font-face {
+    font-family: 'Gotham Womans';
+    src: url('fonts/gotham-womans.woff2') format('woff2'),
+         url('fonts/gotham-womans.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================================
+   Variables
+   ================================ */
+:root {
+    --bg-dark: #1D1D1D;
+    --bg-gray: #262626;
+    --text-white: #FFFFFF;
+    --text-muted: #ADADAD;
+    --coral: #EC7969;
+    --pink: #F26687;
+    --font-hero: 'Gotham Womans', 'Oswald', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Questrial', sans-serif;
+    --font-ui: 'Inter', sans-serif;
+}
+
+/* ================================
+   Reset
+   ================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-white);
+    background: var(--bg-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ================================
+   Header
+   ================================ */
+.site-header {
+    background: var(--coral);
+    border-bottom: 5px solid var(--pink);
+    height: auto;
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.header-nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.header-nav .nav-col {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--bg-dark);
+    text-decoration: underline;
+}
+
+.btn-primary {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    height: 32px;
+    background: var(--bg-dark);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+}
+
+.social-link {
+    color: var(--bg-dark);
+}
+
+.social-link svg {
+    display: block;
+}
+
+/* ================================
+   Main Content
+   ================================ */
+.mobile-content {
+    width: 100%;
+}
+
+/* ================================
+   Hero Section
+   ================================ */
+.hero {
+    background: var(--bg-gray);
+    padding: 32px 20px;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-hero);
+    font-size: 72px;
+    font-weight: 400;
+    color: var(--text-white);
+    line-height: 0.9;
+    margin-bottom: 16px;
+}
+
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1.2;
+}
+
+.hero-platforms {
+    margin-bottom: 16px;
+    min-height: 53px; /* Prevent layout shift during animation */
+}
+
+.hero-platforms .platform-line,
+.hero-platforms .platform-text {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--text-white);
+    line-height: 1.1;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.hero-platforms .platform-line.fade-out,
+.hero-platforms .platform-text.fade-out {
+    opacity: 0;
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mister-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.mister-badge span {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--coral);
+}
+
+.mister-badge img {
+    max-width: 200px;
+}
+
+.hero-image {
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+/* ================================
+   Section Titles
+   ================================ */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 16px;
+}
+
+/* ================================
+   Features Section
+   ================================ */
+.features {
+    background: var(--bg-gray);
+    padding: 32px 20px;
+}
+
+.features-list li {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.features-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+}
+
+/* ================================
+   Showcase / Gallery Sections
+   ================================ */
+.showcase {
+    background: var(--bg-dark);
+    padding: 32px 20px;
+}
+
+.showcase.alt-bg {
+    background: var(--bg-gray);
+}
+
+.showcase-description {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Single column gallery */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gallery-image {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* ================================
+   Specs Section
+   ================================ */
+.specs {
+    background: var(--bg-dark);
+    padding: 32px 20px;
+}
+
+.specs-list li {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.specs-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+}
+
+/* ================================
+   Footer
+   ================================ */
+.site-footer {
+    background: var(--bg-gray);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: var(--font-hero);
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--coral);
+    line-height: 1;
+}
+
+/* ================================
+   Lightbox
+   ================================ */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ================================
+   Responsive adjustments for very small screens
+   ================================ */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 56px;
+    }
+
+    .hero-tagline {
+        font-size: 24px;
+    }
+
+    .hero-platforms .platform-line,
+    .hero-platforms .platform-text {
+        font-size: 36px;
+    }
+
+    .footer-logo {
+        font-size: 48px;
+    }
+}

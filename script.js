@@ -1,11 +1,39 @@
 /**
  * JAMMIX - Minimal JavaScript
  * Clean implementation - no frameworks
- * v2 - Added lightbox functionality
+ * v3 - Added lightbox functionality and rotating platform text
  */
 
 (function() {
     'use strict';
+
+    // ================================
+    // Rotating platform text animation
+    // ================================
+    const platforms = ['Console', 'PC', 'Arcade'];
+    const platformText = document.querySelector('.hero-platforms .platform-text');
+    let currentIndex = 0;
+    const holdDuration = 2000; // How long to show each word (ms)
+    const fadeDuration = 400; // Matches CSS transition duration
+
+    function rotatePlatform() {
+        if (!platformText) return;
+
+        // Fade out current text
+        platformText.classList.add('fade-out');
+
+        // After fade out, change text and fade in
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % platforms.length;
+            platformText.textContent = platforms[currentIndex];
+            platformText.classList.remove('fade-out');
+        }, fadeDuration);
+    }
+
+    // Start the rotation loop
+    if (platformText) {
+        setInterval(rotatePlatform, holdDuration + fadeDuration);
+    }
 
     // ================================
     // Lightbox functionality

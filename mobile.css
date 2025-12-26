@@ -142,14 +142,22 @@ ul {
 
 .hero-platforms {
     margin-bottom: 16px;
+    min-height: 53px; /* Prevent layout shift during animation */
 }
 
-.hero-platforms li {
+.hero-platforms .platform-text {
     font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 400;
     color: var(--text-white);
     line-height: 1.1;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.hero-platforms .platform-text.fade-out {
+    opacity: 0;
 }
 
 .hero-description {
@@ -334,7 +342,7 @@ ul {
         font-size: 24px;
     }
 
-    .hero-platforms li {
+    .hero-platforms .platform-text {
         font-size: 36px;
     }
 

@@ -21,6 +21,9 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
+# Screenshots (dev tool captures)
+screenshots/
+
 # Logs
 *.log
 logs/
@@ -41,3 +44,4 @@ npm-debug.log*
 .env
 .env.local
 .env.*.local
+__pycache__/

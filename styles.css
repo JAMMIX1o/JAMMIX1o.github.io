@@ -123,21 +123,19 @@ ul {
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 100; /* Above fixed-image-panel (z-index: 50) */
+    z-index: 100;
     background-color: var(--accent-coral);
     border-bottom: 7px solid var(--accent-pink);
     height: var(--header-height);
     width: 100%;
+    /* 4-column grid: 10% | 40% | 40% | 10% */
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    align-items: center;
 }
 
 .header-container {
-    margin-left: 10%; /* Align with content column */
-    width: 40%; /* Match content column width */
-    height: 100%;
-    padding: 0 20px 0 0;
-    display: flex;
-    justify-content: flex-end; /* Align nav to right since no logo */
-    align-items: center;
+    display: contents; /* Flatten - children go directly into header grid */
 }
 
 .logo {
@@ -154,9 +152,21 @@ ul {
 }
 
 .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+    display: contents; /* Flatten - children go directly into header grid */
+}
+
+/* Nav link in column 2 (left 40%), right-aligned to edge */
+.header-nav .nav-col:first-child {
+    grid-column: 2;
+    justify-self: end;
+    padding-right: 10px;
+}
+
+/* Button in column 3 (right 40%), right-aligned to edge */
+.header-nav .nav-col:last-child {
+    grid-column: 3;
+    justify-self: end;
+    padding-right: 10px;
 }
 
 .nav-link {

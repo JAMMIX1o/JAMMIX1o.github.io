@@ -22,7 +22,7 @@
 :root {
     --bg-primary: #1D1D1D;
     --bg-secondary: #262626;
-    --bg-hero: #262626;
+    --bg-hero: #1D1D1D;
     --text-primary: #FFFFFF;
     --text-muted: #ADADAD;
     --text-gray: #D0D0D0;
@@ -87,34 +87,39 @@ ul {
 }
 
 /* ================================
-   Split-Screen Layout (Desktop)
-   Fixed PCB image on right, scrollable content on left
+   Two-Column Layout (Desktop)
+   Left: content (44%), Right: sticky image (56%)
+   ChatGPT exact specs: grid 44%/56%, gap 64px
    ================================ */
-.fixed-image-panel {
-    position: fixed;
-    top: calc(var(--header-height) + 7px); /* Below header + border */
-    right: 8%; /* 8% margin from right edge */
-    width: 42%; /* 42% of viewport */
-    height: calc(100vh - var(--header-height) - 7px);
+.main-layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 72px;
+    display: grid;
+    grid-template-columns: 44% 56%;
+    gap: 64px;
+    align-items: start;
+    background-color: var(--bg-primary);
+}
+
+.content-column {
+    min-width: 0; /* Prevents weird overflow squeezing */
+}
+
+.image-column {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 40px;
-    z-index: 50;
-    pointer-events: none;
-    background-color: var(--bg-hero);
+    justify-content: flex-end;
+    position: sticky;
+    top: calc(var(--header-height) + 7px + 40px);
+    align-self: flex-start;
+    height: fit-content;
 }
 
-.fixed-image-panel .product-image {
-    max-width: 450px;
-    width: 80%;
+.image-column .product-image {
+    width: 100%;
+    max-width: 560px;
     height: auto;
-}
-
-.scroll-content {
-    margin-left: 8%; /* 8% margin from left edge */
-    width: 42%; /* 42% of viewport */
-    min-height: calc(100vh - var(--header-height) - 7px);
+    display: block;
 }
 
 /* ================================
@@ -128,45 +133,37 @@ ul {
     border-bottom: 7px solid var(--accent-pink);
     height: var(--header-height);
     width: 100%;
-    /* 4-column grid: 8% | 42% | 42% | 8% */
-    display: grid;
-    grid-template-columns: 8% 42% 42% 8%;
-    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .header-container {
-    display: contents; /* Flatten - children go directly into header grid */
-}
-
-.logo {
-    font-family: var(--font-heading);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-dark);
-    letter-spacing: 0.05em;
-}
-
-.logo:hover {
-    color: var(--text-dark);
-    opacity: 0.8;
+    width: 100%;
+    max-width: 1240px;
+    height: 100%;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
 }
 
 .header-nav {
-    display: contents; /* Flatten - children go directly into header grid */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 24px;
 }
 
-/* Nav link in column 2 (left 40%), right-aligned to edge */
-.header-nav .nav-col:first-child {
-    grid-column: 2;
-    justify-self: end;
-    padding-right: 10px;
+.nav-col-guide {
+    justify-self: flex-start;
 }
 
-/* Button in column 3 (right 40%), right-aligned to edge */
-.header-nav .nav-col:last-child {
-    grid-column: 3;
-    justify-self: end;
-    padding-right: 10px;
+.nav-col-purchase {
+    justify-self: center;
+}
+
+.nav-col-social {
+    justify-self: flex-end;
 }
 
 .nav-link {
@@ -174,7 +171,8 @@ ul {
     font-size: 17px;
     font-weight: 500;
     color: #000000;
-    text-decoration: underline;
+    letter-spacing: 0.08em;
+    text-decoration: none;
 }
 
 .nav-link:hover {
@@ -216,15 +214,16 @@ ul {
    Hero Section (#262626 background)
    ================================ */
 .hero {
-    padding: 60px 20px 20px;
-    background-color: var(--bg-hero);
+    padding: 72px 0 28px;
+    background-color: transparent;
     overflow: visible;
     position: relative;
 }
 
 .hero-container {
     max-width: var(--container-width);
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     display: flex;
     position: relative;
     align-items: flex-start;
@@ -234,17 +233,17 @@ ul {
     flex: 1;
     padding-top: 0;
     z-index: 1;
-    max-width: 420px;
+    max-width: 560px;
 }
 
 /* Hero title - Gotham Womans stencil font, WHITE */
 .hero-title {
     font-family: var(--font-hero);
-    font-size: 120px;
+    font-size: 152px;
     font-weight: 400;
     line-height: 0.9;
     margin-bottom: 8px;
-    color: var(--text-primary);
+    color: #D0D0D0;
     letter-spacing: normal;
 }
 
@@ -254,20 +253,20 @@ ul {
     font-size: 55px;
     font-weight: 700;
     color: var(--accent-coral);
-    margin-bottom: 0;
+    margin-bottom: 16px;
     line-height: 1.1;
 }
 
-/* Platforms - Oswald 74px, WHITE, stacked */
+/* Platforms - Oswald 74px, WHITE, stacked (no bullets) */
 .hero-platforms {
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     align-items: flex-start;
 }
 
-.hero-platforms li {
+.hero-platforms .platform-line {
     font-family: var(--font-heading);
     font-size: 74px;
     font-weight: 400;
@@ -280,8 +279,8 @@ ul {
     font-size: 15px;
     color: var(--text-primary);
     line-height: 1.6;
-    margin-bottom: 16px;
-    max-width: 320px;
+    margin-bottom: 24px;
+    max-width: 360px;
 }
 
 .compatibility-badge {
@@ -335,27 +334,27 @@ ul {
    Features Section (SINGLE COLUMN)
    ================================ */
 .features {
-    padding: 32px 83px;
-    background-color: var(--bg-secondary);
+    padding: 24px 0 40px;
+    background-color: transparent;
 }
 
 .features-container {
-    max-width: var(--container-width);
-    margin: 0 auto;
+    max-width: 560px;
+    margin: 0;
 }
 
 /* Single column layout - matches original */
 .features-list {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 12px;
 }
 
 .features-list li {
     font-family: var(--font-body);
     font-size: 15px;
     color: var(--text-primary);
-    line-height: 1.4;
+    line-height: 1.45;
     padding-left: 20px;
     position: relative;
 }
@@ -519,22 +518,16 @@ ul {
    Responsive Design
    ================================ */
 
-/* Tablet: Collapse to single column, drop margins */
+/* Tablet: Collapse to single column */
 @media (max-width: 1200px) {
-    .fixed-image-panel {
-        display: none; /* Hide fixed panel on smaller screens */
-    }
-
-    .scroll-content {
-        margin-left: 0; /* Drop left margin */
-        width: 100%; /* Full width single column */
-        padding: 0 20px; /* Just some padding for breathing room */
-    }
-
-    .header-container {
-        margin-left: 0; /* Drop left margin */
-        width: 100%; /* Full width header */
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
         padding: 0 20px;
+    }
+
+    .image-column {
+        display: none; /* Hide right column image on smaller screens */
     }
 
     .mobile-product-image {
@@ -571,7 +564,7 @@ ul {
         flex-wrap: wrap;
     }
 
-    .hero-platforms li {
+    .hero-platforms .platform-line {
         font-size: 40px;
     }
 
@@ -593,6 +586,7 @@ ul {
         flex-direction: column;
         gap: 8px;
         padding: 8px 10px;
+        align-items: flex-start;
     }
 
     .site-header {
@@ -600,8 +594,14 @@ ul {
     }
 
     .header-nav {
-        flex-direction: column;
-        gap: 8px;
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .nav-col-purchase,
+    .nav-col-social {
+        justify-self: flex-start;
     }
 
     .hero {
@@ -617,12 +617,8 @@ ul {
         gap: 4px;
     }
 
-    .hero-platforms li {
+    .hero-platforms .platform-line {
         font-size: 32px;
-    }
-
-    .hero-platforms li:not(:last-child)::after {
-        content: '';
     }
 
     .section-title {

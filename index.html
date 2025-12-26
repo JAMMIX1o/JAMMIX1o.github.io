@@ -21,15 +21,12 @@
         </div>
     </header>
 
-    <!-- Fixed PCB Image Panel (right side, stays in place) -->
-    <div class="fixed-image-panel">
-        <img src="images/jammix-board.png" alt="JAMMIX IO Board" class="product-image">
-    </div>
-
-    <!-- Scrollable Content (left side) -->
-    <div class="scroll-content">
-        <!-- Hero Section -->
-        <main>
+    <!-- Two-Column Layout Container -->
+    <div class="main-layout">
+        <!-- Left Column: Content (42%) -->
+        <div class="content-column">
+            <!-- Hero Section -->
+            <main>
             <section class="hero">
                 <div class="hero-container">
                     <div class="hero-content">
@@ -74,24 +71,23 @@
                 </div>
             </section>
 
-            <!-- Specs Section -->
-            <section class="specs">
-                <div class="specs-container">
-                    <h2 class="section-title">Requirements & Notes</h2>
-                    <ul class="specs-list">
-                        <!--#include virtual="/sections/specs-list.html" -->
-                    </ul>
-                </div>
-            </section>
         </main>
+        </div>
+        <!-- End content-column -->
 
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="footer-container">
-                <h2 class="footer-logo">JAMMIX</h2>
-            </div>
-        </footer>
+        <!-- Right Column: Image (58%) -->
+        <div class="image-column">
+            <img src="images/jammix-board.png" alt="JAMMIX IO Board" class="product-image">
+        </div>
     </div>
+    <!-- End main-layout -->
+
+    <!-- Footer (full width) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <h2 class="footer-logo">JAMMIX</h2>
+        </div>
+    </footer>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
